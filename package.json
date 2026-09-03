@@ -1,0 +1,10 @@
+{
+  "name": "11d-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sitio 11D con funciones serverless de Netlify para Wompi y Mi Paquete",
+  "dependencies": {
+    "axios": "^1.19.0",
+    "@supabase/supabase-js": "^2.111.0"
+  }
+}
