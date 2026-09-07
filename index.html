@@ -14,7 +14,7 @@
 <meta property="og:image" content="/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="https://11d.netlify.app">
+<meta property="og:url" content="https://11d-fold.netlify.app">
 <meta property="og:locale" content="es_CO">
 
 <!-- Twitter Card -->
@@ -183,6 +183,7 @@ nav.solid{background:rgba(0,0,0,.97);backdrop-filter:blur(18px);top:0;border-bot
 .hero-ttl{font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(84px,10.5vw,180px);letter-spacing:-2px;color:var(--txt);line-height:.86;animation:hIn 1.1s .1s cubic-bezier(.16,1,.3,1) forwards;opacity:0;transform:translateY(50px)}
 .hero-sub{font-family:'Barlow Condensed',sans-serif;font-style:normal;font-size:13px;letter-spacing:5px;text-transform:uppercase;color:var(--mu);margin-top:26px;animation:hIn .9s .3s cubic-bezier(.16,1,.3,1) forwards;opacity:0;transform:translateY(20px)}
 .hero-cta{margin-top:36px;display:inline-flex;align-items:center;gap:12px;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--txt);text-decoration:none;border-bottom:1px solid #2e2c28;padding-bottom:10px;width:fit-content;transition:border-color .3s,color .3s;animation:hIn .9s .5s cubic-bezier(.16,1,.3,1) forwards;opacity:0}
+@keyframes hIn{to{opacity:1;transform:translateY(0)}}
 .hero-cta:hover{border-color:var(--red);color:var(--red)}
 .hero-cta span{transition:transform .3s;display:inline-block}
 .hero-cta:hover span{transform:translateX(5px)}
@@ -351,19 +352,27 @@ nav.solid{background:rgba(0,0,0,.97);backdrop-filter:blur(18px);top:0;border-bot
 @media(max-width:900px){.visuals-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:520px){.visuals-grid{grid-template-columns:repeat(2,1fr)}}
 /* SECTION 5+6 — FOTO + MÚSICA FUSIONADAS */
-#s-photo{position:relative;overflow:hidden;background:#000;height:100vh;min-height:600px}
-#s-photo .sp-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;display:none}
-.sp-ov{position:absolute;inset:0;background:rgba(0,0,0,0);transition:none;z-index:1;pointer-events:none}
-.sp-bot{position:absolute;bottom:0;left:0;right:0;height:20%;background:linear-gradient(to bottom,transparent,#000);z-index:2;pointer-events:none}
-.sp-top-fade{position:absolute;top:0;left:0;right:0;height:20%;background:linear-gradient(to bottom,rgba(0,0,0,.3),transparent);z-index:2;pointer-events:none}
-.sp-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#030303}
-.sp-ph span{font-family:'Playfair Display',serif;font-size:80px;color:#0d0d0d;letter-spacing:10px}
-.sp-upl{display:none;position:absolute;top:18px;right:18px;z-index:10;background:rgba(0,0,0,.9);border:1px solid #1e1e1e;padding:10px 16px;flex-direction:column;gap:4px;min-width:220px;max-height:80vh;overflow-y:auto}
-.admin-mode .sp-upl{display:flex}
-.about-overlay{position:absolute;left:0;bottom:0;z-index:3;padding:0 5vw 70px 60px;max-width:580px;pointer-events:none}
-.about-ttl{font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(28px,3.4vw,48px);line-height:1.14;color:var(--txt);margin:20px 0 20px}
+#s-photo{position:relative;background:#000}
+.about-split{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:0}
+.about-col-text{padding:20px 5vw 90px 60px}
+.about-ttl{font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(28px,3.4vw,48px);line-height:1.14;color:var(--txt);margin:0 0 20px}
 .about-body{font-family:'Barlow',sans-serif;font-size:14px;line-height:1.85;color:var(--mu);max-width:440px}
-@media(max-width:768px){.about-overlay{padding:0 20px 50px}.about-ttl{font-size:clamp(30px,7vw,40px)}}
+.about-col-photo{display:flex;align-items:center;justify-content:center;padding:20px 60px 90px 5vw}
+.about-photo-box{position:relative;width:100%;max-width:520px;aspect-ratio:1/1;overflow:hidden;background:#0d0d0d}
+.about-photo-box .sp-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;display:none}
+.about-photo-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#030303}
+.about-photo-ph span{font-family:'Playfair Display',serif;font-size:52px;color:#151515;letter-spacing:8px}
+.sp-upl{display:none;position:absolute;top:14px;right:14px;z-index:10;background:rgba(0,0,0,.9);border:1px solid #1e1e1e;padding:10px 14px;flex-direction:column;gap:4px;min-width:170px}
+.admin-mode .sp-upl{display:flex}
+@media(max-width:900px){
+  .about-split{grid-template-columns:1fr}
+  .about-col-text{padding:50px 20px 30px}
+  .about-col-photo{padding:0 20px 50px}
+}
+.adm-editable{outline:1px dashed transparent;outline-offset:6px;cursor:text;border-radius:2px;transition:outline-color .2s,background-color .2s}
+.admin-mode .adm-editable:hover{outline-color:rgba(244,241,234,.35)}
+.adm-editable:focus{outline:1px dashed var(--red);background:rgba(244,241,234,.04)}
+@media(max-width:768px){.about-ttl{font-size:clamp(30px,7vw,40px)}}
 
 /* SECTION 6 MÚSICA — superpuesta sobre la foto */
 #s-music{background:#000;padding:80px 44px 80px;position:relative;z-index:3}
@@ -976,7 +985,7 @@ body.user-logged .auth-tabs{display:none!important}
     <div class="hero-eyebrow" id="heroEyebrow">Artist</div>
     <h1 class="hero-ttl">11D</h1>
     <p class="hero-sub" id="heroSub">Music / Culture / Vision</p>
-    <a href="#s-merch2" class="hero-cta"><span id="heroCta">Listen Now</span> <span>&#8594;</span></a>
+    <a href="#s-merch2" class="hero-cta" onclick="return !adm"><span id="heroCta">Listen Now</span> <span>&#8594;</span></a>
   </div>
   <div class="hero-photo-col">
     <div class="hero-bg" id="heroBg"></div>
@@ -994,17 +1003,7 @@ body.user-logged .auth-tabs{display:none!important}
       <button class="abtn" style="margin-top:4px" onclick="g('heroBgVideoFile').click()">🎬 Subir video de fondo</button>
       <button class="abtn" style="background:none;color:var(--mu);border:1px solid #333;margin-top:4px" onclick="clearHeroBg()">Quitar fondo</button>
       <div style="font-family:'Barlow Condensed',sans-serif;font-style:normal;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#333;margin-top:12px;margin-bottom:8px">— Textos —</div>
-      <label style="font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#555;display:block;margin-bottom:3px">Eyebrow</label>
-      <input type="text" id="heroEyebrowInp" placeholder="Artist" style="width:100%;background:#0a0a0a;border:1px solid #1e1e1e;color:#fff;padding:7px 9px;font-family:Barlow,sans-serif;font-size:11px;margin-bottom:6px">
-      <label style="font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#555;display:block;margin-bottom:3px">Tagline</label>
-      <input type="text" id="heroSubInp" placeholder="Music / Culture / Vision" style="width:100%;background:#0a0a0a;border:1px solid #1e1e1e;color:#fff;padding:7px 9px;font-family:Barlow,sans-serif;font-size:11px;margin-bottom:6px">
-      <label style="font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#555;display:block;margin-bottom:3px">Botón</label>
-      <input type="text" id="heroCtaInp" placeholder="Listen Now" style="width:100%;background:#0a0a0a;border:1px solid #1e1e1e;color:#fff;padding:7px 9px;font-family:Barlow,sans-serif;font-size:11px;margin-bottom:6px">
-      <label style="font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#555;display:block;margin-bottom:3px">Ficha línea 1</label>
-      <input type="text" id="heroInfo1Inp" placeholder="Artista de FOLD" style="width:100%;background:#0a0a0a;border:1px solid #1e1e1e;color:#fff;padding:7px 9px;font-family:Barlow,sans-serif;font-size:11px;margin-bottom:6px">
-      <label style="font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#555;display:block;margin-bottom:3px">Ficha línea 2</label>
-      <input type="text" id="heroInfo2Inp" placeholder="Colombia" style="width:100%;background:#0a0a0a;border:1px solid #1e1e1e;color:#fff;padding:7px 9px;font-family:Barlow,sans-serif;font-size:11px;margin-bottom:8px">
-      <button class="abtn" onclick="saveHeroText()">Guardar textos</button>
+      <div style="font-family:'Barlow',sans-serif;font-size:11px;color:#666;line-height:1.6">✎ Haz clic directamente sobre el "Artist", el título, el subtítulo, el botón "Listen Now" o la ficha de la derecha para editarlos. Clic afuera para guardar.</div>
     </div>
     <div class="hero-info-box">
       <div class="hi-name">11D</div>
@@ -1032,7 +1031,7 @@ body.user-logged .auth-tabs{display:none!important}
 <div class="mqd rev"><div class="t"><span class="i">MERCH OFICIAL<span class="d">✦</span>SHOP<span class="d">✦</span>HOODIES<span class="d">✦</span>CAMISETAS<span class="d">✦</span>DISCOS<span class="d">✦</span>ACCESORIOS<span class="d">✦</span></span><span class="i">MERCH OFICIAL<span class="d">✦</span>SHOP<span class="d">✦</span>HOODIES<span class="d">✦</span>CAMISETAS<span class="d">✦</span>DISCOS<span class="d">✦</span>ACCESORIOS<span class="d">✦</span></span></div></div>
 <section id="s-merch1">
   <div class="sec-eyebrow-row">
-    <div class="sec-eyebrow-l"><span class="sec-num">01</span><span class="sec-lbl">Shop</span></div>
+    <div class="sec-eyebrow-l"><span class="sec-num">01</span><span class="sec-lbl" id="secLblShop">Shop</span></div>
     <a href="#s-merch2" class="sec-link" onclick="goF('Todos')">Ver todo <span class="sl-arrow">&#8594;</span></a>
   </div>
   <div class="mcat-grid">
@@ -1090,7 +1089,7 @@ body.user-logged .auth-tabs{display:none!important}
 <!-- 4 MERCH SLIDER -->
 <section id="s-merch2">
   <div class="sec-eyebrow-row">
-    <div class="sec-eyebrow-l"><span class="sec-num">02</span><span class="sec-lbl">Colección</span></div>
+    <div class="sec-eyebrow-l"><span class="sec-num">02</span><span class="sec-lbl" id="secLblColeccion">Colección</span></div>
   </div>
   <div class="m-hdr fade-up">
     <div class="m-hdr-l"><div class="eye">Merch Oficial</div><div class="ttl" id="slTitle">Prendas Recomendadas</div></div>
@@ -1283,28 +1282,26 @@ body.user-logged .auth-tabs{display:none!important}
   <div id="emptyM" style="text-align:center;padding:60px 44px;color:var(--mu);font-family:'Barlow Condensed',sans-serif;font-style:normal;font-size:12px;letter-spacing:3px;text-transform:uppercase"></div>
 </section>
 
-<!-- 5+6 SCROLL PHOTO + ABOUT -->
+<!-- 5+6 ABOUT (texto + foto cuadrada) -->
 <section id="s-photo">
-  <div class="sp-ph" id="spPh"><span>11D</span></div>
-  <img class="sp-img" id="spImg" src="" alt="">
-  <div class="sp-ov" id="spOv"></div>
-  <div class="sp-top-fade"></div>
-  <div class="sp-bot"></div>
-  <div class="about-overlay">
-    <div class="sec-eyebrow-l" style="margin-bottom:0"><span class="sec-num">03</span><span class="sec-lbl">About 11D</span></div>
-    <div class="about-ttl" id="aboutTtl">Sonido que viene<br>de la experiencia.</div>
-    <p class="about-body" id="aboutBody">11D transforma historias reales, emociones y recuerdos en sonido. Cada lanzamiento es una pieza de un universo mayor construido con intención y detalle.</p>
+  <div class="sec-eyebrow-row" style="border-bottom:none">
+    <div class="sec-eyebrow-l"><span class="sec-num">03</span><span class="sec-lbl" id="secLblAbout">About 11D</span></div>
   </div>
-  <div class="sp-upl">
-    <input type="file" id="spFile" accept="image/*" style="display:none" onchange="uploadSP(this)">
-    <button class="abtn" onclick="g('spFile').click()" style="font-size:10px;padding:6px 10px">🖼 Subir foto</button>
-    <button class="abtn" onclick="clearSP()" style="background:none;color:var(--mu);border:1px solid #333;font-size:10px;padding:6px 10px;margin-top:4px">Quitar foto</button>
-    <div style="border-top:1px solid #222;margin-top:10px;padding-top:10px">
-      <label style="font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;display:block;margin-bottom:4px">Título (usa &lt;br&gt; para salto de línea)</label>
-      <input type="text" id="aboutTtlInp" placeholder="Sonido que viene&lt;br&gt;de la experiencia." style="width:100%;background:#0a0a0a;border:1px solid #1e1e1e;color:#fff;padding:7px 9px;font-family:Barlow,sans-serif;font-size:11px;margin-bottom:6px">
-      <label style="font-family:'Barlow Condensed',sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;display:block;margin-bottom:4px">Texto</label>
-      <textarea id="aboutBodyInp" rows="4" style="width:100%;background:#0a0a0a;border:1px solid #1e1e1e;color:#fff;padding:7px 9px;font-family:Barlow,sans-serif;font-size:11px;margin-bottom:6px"></textarea>
-      <button class="abtn" style="font-size:10px;padding:6px 10px" onclick="saveAbout()">Guardar texto</button>
+  <div class="about-split">
+    <div class="about-col-text">
+      <div class="about-ttl" id="aboutTtl">Sonido que viene<br>de la experiencia.</div>
+      <p class="about-body" id="aboutBody">11D transforma historias reales, emociones y recuerdos en sonido. Cada lanzamiento es una pieza de un universo mayor construido con intención y detalle.</p>
+    </div>
+    <div class="about-col-photo">
+      <div class="about-photo-box">
+        <div class="about-photo-ph" id="spPh"><span>11D</span></div>
+        <img class="sp-img" id="spImg" src="" alt="">
+        <div class="sp-upl">
+          <input type="file" id="spFile" accept="image/*" style="display:none" onchange="uploadSP(this)">
+          <button class="abtn" onclick="g('spFile').click()" style="font-size:10px;padding:6px 10px">🖼 Subir foto</button>
+          <button class="abtn" onclick="clearSP()" style="background:none;color:var(--mu);border:1px solid #333;font-size:10px;padding:6px 10px;margin-top:4px">Quitar foto</button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1312,7 +1309,7 @@ body.user-logged .auth-tabs{display:none!important}
 <!-- MÚSICA -->
 <section id="s-music">
   <div class="sec-eyebrow-row">
-    <div class="sec-eyebrow-l"><span class="sec-num">04</span><span class="sec-lbl">Música</span></div>
+    <div class="sec-eyebrow-l"><span class="sec-num">04</span><span class="sec-lbl" id="secLblMusica">Música</span></div>
     <a href="#" id="secMusicLink" class="sec-link" target="_blank" rel="noopener">Escuchar en Spotify <span class="sl-arrow">&#8594;</span></a>
   </div>
   <div class="mus-adm">
@@ -1387,7 +1384,7 @@ body.user-logged .auth-tabs{display:none!important}
 <!-- VISUALS -->
 <section id="s-visuals">
   <div class="sec-eyebrow-row">
-    <div class="sec-eyebrow-l"><span class="sec-num">05</span><span class="sec-lbl">Visuals</span></div>
+    <div class="sec-eyebrow-l"><span class="sec-num">05</span><span class="sec-lbl" id="secLblVisuals">Visuals</span></div>
   </div>
   <div class="visuals-adm">
     <input type="file" accept="image/*" id="visualsFile" style="display:none" onchange="uploadGalleryImage(this)">
@@ -1407,7 +1404,7 @@ body.user-logged .auth-tabs{display:none!important}
 <section id="s-tour">
   <div class="tour-bg" id="tourBg"></div>
   <div class="tour-fade"></div>
-  <div class="tour-num-corner"><span class="sec-num">06</span><span class="sec-lbl">Tour</span></div>
+  <div class="tour-num-corner"><span class="sec-num">06</span><span class="sec-lbl" id="secLblTour">Tour</span></div>
   <div class="tour-inner" id="tourInner">
     <!-- Header centrado (siempre visible) -->
     <div class="tour-hdr fade-up">
@@ -1441,7 +1438,7 @@ body.user-logged .auth-tabs{display:none!important}
 <div class="mqd"><div class="t"><span class="i">CONTACTO<span class="d">✦</span>BOOKING<span class="d">✦</span>COLABORACIONES<span class="d">✦</span>PRENSA<span class="d">✦</span>HABLEMOS<span class="d">✦</span></span><span class="i">CONTACTO<span class="d">✦</span>BOOKING<span class="d">✦</span>COLABORACIONES<span class="d">✦</span>PRENSA<span class="d">✦</span>HABLEMOS<span class="d">✦</span></span></div></div>
 <section id="s-contact">
   <div class="sec-eyebrow-row" style="padding-left:0;padding-right:0;margin-bottom:44px">
-    <div class="sec-eyebrow-l"><span class="sec-num">07</span><span class="sec-lbl">Contacto</span></div>
+    <div class="sec-eyebrow-l"><span class="sec-num">07</span><span class="sec-lbl" id="secLblContacto">Contacto</span></div>
   </div>
   <div class="ct-grid">
     <div class="ci fade-up">
@@ -1944,6 +1941,7 @@ let DROP={name:'',target:null,start:null,open:null,units:0,dropId:null};let drop
 let GALLERY=[];
 let ABOUT={title:'Sonido que viene<br>de la experiencia.',body:'11D transforma historias reales, emociones y recuerdos en sonido. Cada lanzamiento es una pieza de un universo mayor construido con intención y detalle.'};
 let HERO_TEXT={eyebrow:'Artist',sub:'Music / Culture / Vision',cta:'Listen Now',info1:'Artista de FOLD',info2:'Colombia'};
+let SECTION_LABELS={shop:'Shop',coleccion:'Colección',about:'About 11D',musica:'Música',visuals:'Visuals',tour:'Tour',contacto:'Contacto'};
 let CODES=[];// discount codes: [{id,code,type:'pct'|'gift',pct,giftProductId,scope:'global'|'product',scopeProductId,uses,maxUses,exp,active}]
 let dcEditId=null;
 
@@ -1977,6 +1975,7 @@ async function loadAllFromSB(){
       else if(row.key==='gallery')try{GALLERY=JSON.parse(row.value);}catch(e){}
       else if(row.key==='about_content')try{ABOUT=JSON.parse(row.value);}catch(e){}
       else if(row.key==='hero_text')try{HERO_TEXT=Object.assign({},HERO_TEXT,JSON.parse(row.value));}catch(e){}
+      else if(row.key==='section_labels')try{SECTION_LABELS=Object.assign({},SECTION_LABELS,JSON.parse(row.value));}catch(e){}
       else if(row.key==='preventa_target')try{pvTarget=row.value?new Date(row.value):null;}catch(e){}
       else if(row.key==='drop_config')try{const dc=JSON.parse(row.value);DROP.name=dc.name||'';DROP.target=dc.target?new Date(dc.target):null;DROP.start=dc.start?new Date(dc.start):null;DROP.open=dc.open?new Date(dc.open):null;DROP.units=dc.units||0;DROP.dropId=dc.dropId||null;}catch(e){}
     });}
@@ -2005,8 +2004,9 @@ document.addEventListener('DOMContentLoaded',async()=>{
   await loadAllFromSB();
   await checkOAuthCallback();
   if(cu)await loadCartFromAccount();
-  applyLinks();applyLogo();applyFoldLogo();applyHBG();applySV();applySP();applyCats();applyTrackBg();applyAbout();applyHeroText();
+  applyLinks();applyLogo();applyFoldLogo();applyHBG();applySV();applySP();applyCats();applyTrackBg();applyAbout();applyHeroText();applySectionLabels();
   const fy=g('ftYear');if(fy)fy.textContent=new Date().getFullYear();
+  setupInlineEditing();
   checkCookieConsent();
   renderMerch();renderAlbums();renderEditAlb();renderGallery();updateCart();applyAdm();updateUI();genCap();
   window.addEventListener('scroll',()=>{
@@ -2200,15 +2200,13 @@ function applyAbout(){
   const t=g('aboutTtl'),b=g('aboutBody');
   if(t)t.innerHTML=ABOUT.title||'';
   if(b)b.textContent=ABOUT.body||'';
-  const ti=g('aboutTtlInp'),bi=g('aboutBodyInp');
-  if(ti)ti.value=ABOUT.title||'';
-  if(bi)bi.value=ABOUT.body||'';
 }
-async function saveAbout(){
+async function saveAboutField(field,value){
   if(!adm)return;
-  ABOUT={title:gv('aboutTtlInp')||ABOUT.title,body:gv('aboutBodyInp')||ABOUT.body};
+  if(ABOUT[field]===value)return;
+  ABOUT[field]=value;
   await sbSaveConfig('about_content',JSON.stringify(ABOUT));
-  applyAbout();toast('✓ Texto guardado');
+  toast('✓ Guardado');
 }
 function applyHeroText(){
   const e=g('heroEyebrow'),s=g('heroSub'),c=g('heroCta'),i1=g('heroInfo1'),i2=g('heroInfo2');
@@ -2217,27 +2215,73 @@ function applyHeroText(){
   if(c)c.textContent=HERO_TEXT.cta||'';
   if(i1)i1.textContent=HERO_TEXT.info1||'';
   if(i2)i2.textContent=HERO_TEXT.info2||'';
-  const ei=g('heroEyebrowInp'),si=g('heroSubInp'),ci=g('heroCtaInp'),i1i=g('heroInfo1Inp'),i2i=g('heroInfo2Inp');
-  if(ei)ei.value=HERO_TEXT.eyebrow||'';
-  if(si)si.value=HERO_TEXT.sub||'';
-  if(ci)ci.value=HERO_TEXT.cta||'';
-  if(i1i)i1i.value=HERO_TEXT.info1||'';
-  if(i2i)i2i.value=HERO_TEXT.info2||'';
 }
-async function saveHeroText(){
+async function saveHeroTextField(field,value){
   if(!adm)return;
-  HERO_TEXT={
-    eyebrow:gv('heroEyebrowInp')||HERO_TEXT.eyebrow,
-    sub:gv('heroSubInp')||HERO_TEXT.sub,
-    cta:gv('heroCtaInp')||HERO_TEXT.cta,
-    info1:gv('heroInfo1Inp')||HERO_TEXT.info1,
-    info2:gv('heroInfo2Inp')||HERO_TEXT.info2
-  };
+  if(HERO_TEXT[field]===value)return;
+  HERO_TEXT[field]=value;
   await sbSaveConfig('hero_text',JSON.stringify(HERO_TEXT));
-  applyHeroText();toast('✓ Textos guardados');
+  toast('✓ Guardado');
+}
+function applySectionLabels(){
+  const map={shop:'secLblShop',coleccion:'secLblColeccion',about:'secLblAbout',musica:'secLblMusica',visuals:'secLblVisuals',tour:'secLblTour',contacto:'secLblContacto'};
+  Object.keys(map).forEach(k=>{const el=g(map[k]);if(el)el.textContent=SECTION_LABELS[k]||'';});
+}
+async function saveSectionLabelField(field,value){
+  if(!adm)return;
+  if(SECTION_LABELS[field]===value)return;
+  SECTION_LABELS[field]=value;
+  await sbSaveConfig('section_labels',JSON.stringify(SECTION_LABELS));
+  toast('✓ Guardado');
+}
+// Click-to-edit: toggles contentEditable on the small hero/about texts whenever
+// admin mode turns on/off, and wires up a one-time blur listener per element
+// that saves automatically when the admin clicks away.
+let _inlineEditBound=false;
+function toggleEditableTexts(){
+  const ids=['heroEyebrow','heroSub','heroCta','heroInfo1','heroInfo2','aboutTtl','aboutBody',
+    'secLblShop','secLblColeccion','secLblAbout','secLblMusica','secLblVisuals','secLblTour','secLblContacto'];
+  ids.forEach(id=>{
+    const el=g(id);if(!el)return;
+    el.contentEditable=adm?'true':'false';
+    el.classList.toggle('adm-editable',adm);
+  });
+}
+function setupInlineEditing(){
+  if(_inlineEditBound)return;
+  _inlineEditBound=true;
+  try{document.execCommand('defaultParagraphSeparator','false','br');}catch(e){}
+  const bindings=[
+    ['heroEyebrow',v=>saveHeroTextField('eyebrow',v),false],
+    ['heroSub',v=>saveHeroTextField('sub',v),false],
+    ['heroCta',v=>saveHeroTextField('cta',v),false],
+    ['heroInfo1',v=>saveHeroTextField('info1',v),false],
+    ['heroInfo2',v=>saveHeroTextField('info2',v),false],
+    ['aboutTtl',v=>saveAboutField('title',v),true],
+    ['aboutBody',v=>saveAboutField('body',v),false],
+    ['secLblShop',v=>saveSectionLabelField('shop',v),false],
+    ['secLblColeccion',v=>saveSectionLabelField('coleccion',v),false],
+    ['secLblAbout',v=>saveSectionLabelField('about',v),false],
+    ['secLblMusica',v=>saveSectionLabelField('musica',v),false],
+    ['secLblVisuals',v=>saveSectionLabelField('visuals',v),false],
+    ['secLblTour',v=>saveSectionLabelField('tour',v),false],
+    ['secLblContacto',v=>saveSectionLabelField('contacto',v),false]
+  ];
+  bindings.forEach(([id,fn,isHtml])=>{
+    const el=g(id);if(!el)return;
+    el.addEventListener('blur',()=>{
+      if(!adm)return;
+      const val=isHtml?el.innerHTML.trim():el.textContent.trim();
+      fn(val);
+    });
+    if(!isHtml){
+      el.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();el.blur();}});
+    }
+  });
 }
 function updSP(){
   const sec=g('s-photo'),ov=g('spOv');
+  if(!sec||!ov)return;
   const r=sec.getBoundingClientRect(),vh=window.innerHeight;
   if(r.top>vh||r.bottom<0)return;
   const pr=Math.max(0,Math.min(1,1-(r.bottom-vh*0.35)/(vh*1.3)));
@@ -2326,6 +2370,7 @@ function applyAdm(){
   document.body.classList.toggle('admin-mode',adm);
   g('leWrap').style.display=adm?'block':'none';
   renderMerch();renderDrop();populateDropSelects();renderTour();renderGallery();
+  toggleEditableTexts();
 }
 function tP(id){const p=g(id);const open=p.style.display!=='block';p.style.display=open?'block':'none';if(open&&id==='pEditAlb')renderEditAlb();}
 
