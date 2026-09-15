@@ -413,44 +413,88 @@ nav.solid{background:rgba(0,0,0,.97);backdrop-filter:blur(18px);top:0;border-bot
 .trev-center .t-nm{order:2;text-align:left;flex:1}
 .trev-center .t-pi{order:3;flex-shrink:0}
 .trev-center .t-del{order:4;flex-shrink:0}
-/* ── CD CAROUSEL ──────────────────────────────────────────────────────────── */
+/* ── MÚSICA: lanzamiento destacado + discografía ─────────────────────────── */
+.music-featured{display:grid;grid-template-columns:340px 1fr;gap:52px;padding:8px 44px 56px;align-items:start}
+.music-featured-cover{position:relative;width:100%;aspect-ratio:1/1;overflow:hidden;background:#0d0d0d;box-shadow:0 30px 60px -24px rgba(0,0,0,.8)}
+.music-featured-cover img{width:100%;height:100%;object-fit:cover;display:block}
+.music-featured-cover-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#201f1c,#121110);font-family:'Playfair Display',serif;font-size:44px;color:var(--mu);letter-spacing:4px}
+.music-featured-cover-edit{position:absolute;bottom:12px;right:12px;background:rgba(0,0,0,.75);border:1px solid #333;color:var(--mu);font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:7px 12px;cursor:pointer;display:none}
+.admin-mode .music-featured-cover-edit{display:block}
+.music-featured-cover-edit:hover{color:var(--txt);border-color:var(--txt)}
+.music-featured-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--mu);margin-bottom:14px}
+.music-featured-name{font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(30px,4vw,50px);line-height:1.05;color:var(--txt)}
+.music-featured-artist{font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-top:10px}
+.music-featured-play{margin-top:26px;display:inline-flex;align-items:center;gap:10px;background:none;border:none;padding:0;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--txt);cursor:pointer;border-bottom:1px solid #2e2c28;padding-bottom:9px;transition:color .2s,border-color .2s}
+.music-featured-play:hover{color:var(--red);border-color:var(--red)}
+.music-featured-tracks{margin-top:32px;border-top:1px solid #221f1a;padding-top:8px}
+.music-featured-del{margin-top:24px;background:none;border:1px solid #333;color:var(--mu);font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:7px 12px;cursor:pointer;display:none}
+.admin-mode .music-featured-del{display:inline-block}
+.music-featured-del:hover{color:var(--red);border-color:var(--red)}
+.music-more-lbl{padding:0 44px;font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mu);border-top:1px solid #221f1a;padding-top:28px;margin-top:4px}
+@media(max-width:900px){
+  .music-featured{grid-template-columns:1fr;padding:8px 20px 40px;gap:28px}
+  .music-more-lbl{padding:0 20px;padding-top:24px}
+}
+/* ── CD CAROUSEL (discografía secundaria — portadas cuadradas) ───────────── */
 .cd-carousel-wrap{position:relative}
-.cd-carousel{display:flex;gap:36px;overflow-x:auto;padding:20px 4px 28px;scroll-behavior:smooth;scrollbar-width:none}
+.cd-carousel{display:flex;gap:32px;overflow-x:auto;padding:24px 44px 32px;scroll-behavior:smooth;scrollbar-width:none;scroll-snap-type:x proximity}
 .cd-carousel::-webkit-scrollbar{display:none}
-.cd-item{flex:0 0 auto;width:200px;display:flex;flex-direction:column;align-items:center;cursor:pointer;text-align:center}
-.cd-disc{position:relative;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle at 50% 50%,#1a1a1a 0 20px,var(--brown) 21px,#151515 22px 100%);box-shadow:0 18px 40px -14px rgba(0,0,0,.8),0 0 0 1px rgba(216,210,200,.06);transition:transform .5s cubic-bezier(.16,1,.3,1);overflow:hidden}
-.cd-item:hover .cd-disc{transform:translateY(-8px) rotate(8deg)}
-.cd-cover{position:absolute;inset:14%;border-radius:50%;overflow:hidden;background:#0d0d0d;box-shadow:0 0 0 1px rgba(216,210,200,.08) inset}
+.cd-item{flex:0 0 auto;width:150px;display:flex;flex-direction:column;align-items:flex-start;cursor:pointer;text-align:left;scroll-snap-align:start}
+.cd-disc{position:relative;width:150px;height:150px;overflow:hidden;background:#0d0d0d;box-shadow:0 14px 30px -14px rgba(0,0,0,.7);transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s}
+.cd-item:hover .cd-disc,.cd-item:active .cd-disc{transform:translateY(-4px);box-shadow:0 20px 40px -14px rgba(0,0,0,.85)}
+.cd-cover{position:absolute;inset:0;overflow:hidden;background:#0d0d0d}
 .cd-cover img{width:100%;height:100%;object-fit:cover;display:block}
-.cd-cover-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:34px;letter-spacing:3px;color:var(--mu);background:linear-gradient(145deg,#232323,#151515)}
-.cd-hole{position:absolute;left:50%;top:50%;width:16%;height:16%;transform:translate(-50%,-50%);border-radius:50%;background:var(--bg);box-shadow:0 0 0 1px rgba(216,210,200,.12)}
-.cd-sheen{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 210deg,rgba(255,255,255,0) 0deg,rgba(255,255,255,.14) 40deg,rgba(255,255,255,0) 90deg,rgba(255,255,255,0) 320deg,rgba(255,255,255,.08) 350deg,rgba(255,255,255,0) 360deg);pointer-events:none}
-.cd-name{font-family:'Playfair Display',serif;font-size:20px;letter-spacing:3px;color:var(--txt);margin-top:22px}
-.cd-artist{font-family:'Barlow Condensed',sans-serif;font-style:normal;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-top:2px}
+.cd-cover-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:26px;letter-spacing:2px;color:var(--mu);background:linear-gradient(145deg,#201f1c,#121110)}
+.cd-hole,.cd-sheen{display:none}
+.cd-play-hint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0);transition:background .3s;z-index:2}
+.cd-play-hint span{width:40px;height:40px;border-radius:50%;background:rgba(11,11,10,.6);backdrop-filter:blur(2px);border:1px solid rgba(244,241,234,.3);color:var(--txt);display:flex;align-items:center;justify-content:center;font-size:13px;opacity:0;transform:scale(.85);transition:opacity .3s,transform .3s}
+.cd-item:hover .cd-play-hint,.cd-item:active .cd-play-hint{background:rgba(0,0,0,.3)}
+.cd-item:hover .cd-play-hint span,.cd-item:active .cd-play-hint span{opacity:1;transform:scale(1)}
+.cd-name{font-family:'Playfair Display',serif;font-size:16px;letter-spacing:.5px;color:var(--txt);margin-top:16px}
+.cd-artist{font-family:'Barlow Condensed',sans-serif;font-style:normal;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-top:3px}
 .cd-arrows{display:flex;justify-content:center;gap:10px;margin-top:6px}
 .cd-arr{width:42px;height:42px;border-radius:50%;background:none;border:1px solid #333;color:var(--mu);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
 .cd-arr:hover{border-color:var(--red);color:var(--red)}
-.cd-del{position:absolute;top:-6px;right:-6px;width:26px;height:26px;border-radius:50%;background:rgba(0,0,0,.85);border:1px solid #333;color:var(--mu);font-size:12px;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:4}
+.cd-del{position:absolute;top:-6px;right:-6px;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.85);border:1px solid #333;color:var(--mu);font-size:12px;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:4}
 .admin-mode .cd-del{display:flex}
 .cd-del:hover{color:var(--red);border-color:var(--red)}
-.cd-cover-edit{position:absolute;bottom:-6px;right:-6px;width:26px;height:26px;border-radius:50%;background:rgba(0,0,0,.85);border:1px solid #333;color:var(--mu);font-size:11px;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:4}
+.cd-cover-edit{position:absolute;bottom:-6px;right:-6px;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.85);border:1px solid #333;color:var(--mu);font-size:11px;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:4}
 .admin-mode .cd-cover-edit{display:flex}
 .cd-cover-edit:hover{color:var(--red);border-color:var(--red)}
-/* Album / tracklist modal */
-.alb-m{position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:750;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;padding:20px}
+@media(max-width:768px){
+  .cd-carousel{padding:16px 20px 24px;gap:16px}
+  .cd-item{width:122px}
+  .cd-disc{width:122px;height:122px}
+  .cd-name{font-size:14px;margin-top:12px}
+}
+/* Album / tracklist modal — "now playing" de dos columnas */
+.alb-m{position:fixed;inset:0;background:rgba(0,0,0,.97);z-index:750;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;padding:24px}
 .alb-m.open{opacity:1;pointer-events:all}
-.alb-box{background:var(--sur);border:1px solid #333;max-width:640px;width:100%;max-height:88vh;overflow-y:auto;position:relative}
-.alb-box-x{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--mu);font-size:20px;cursor:pointer;z-index:2}
-.alb-box-x:hover{color:var(--txt)}
-.alb-box-hdr{display:flex;gap:24px;align-items:center;padding:36px 36px 24px}
-.alb-box-cover{width:120px;height:120px;border-radius:50%;flex-shrink:0;overflow:hidden;box-shadow:0 12px 28px -10px rgba(0,0,0,.7)}
-.alb-box-cover img{width:100%;height:100%;object-fit:cover}
+.alb-box{background:var(--sur);border:1px solid #262420;max-width:780px;width:100%;max-height:88vh;position:relative;display:grid;grid-template-columns:280px 1fr;overflow:hidden}
+.alb-box-x{position:absolute;top:16px;right:18px;background:rgba(0,0,0,.5);border:1px solid #2e2c28;border-radius:50%;width:34px;height:34px;color:var(--mu);font-size:16px;cursor:pointer;z-index:3;display:flex;align-items:center;justify-content:center;transition:color .2s,border-color .2s}
+.alb-box-x:hover{color:var(--txt);border-color:var(--txt)}
+.alb-box-left{padding:48px 32px 40px 44px;display:flex;flex-direction:column;align-items:flex-start;border-right:1px solid #262420;overflow-y:auto}
+.alb-box-cover-wrap{width:100%;aspect-ratio:1/1;overflow:hidden;background:#0d0d0d;box-shadow:0 24px 54px -20px rgba(0,0,0,.85);margin-bottom:24px;flex-shrink:0}
+.alb-box-cover-wrap img{width:100%;height:100%;object-fit:cover;display:block}
 .alb-box-cover-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#232323,#151515);font-family:'Playfair Display',serif;font-size:30px;color:var(--mu)}
-.alb-box-ttl{font-family:'Playfair Display',serif;font-size:34px;letter-spacing:3px;color:var(--txt);line-height:1}
-.alb-box-artist{font-family:'Barlow Condensed',sans-serif;font-style:normal;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--mu);margin-top:6px}
-.alb-box-play{margin-top:12px;background:var(--red);border:none;color:var(--ink);width:46px;height:46px;border-radius:50%;font-size:16px;cursor:pointer;transition:transform .2s}
-.alb-box-play:hover{transform:scale(1.08)}
-.alb-box-tracks{padding:0 36px 36px}
+.alb-box-ttl{font-family:'Playfair Display',serif;font-size:26px;letter-spacing:1px;color:var(--txt);line-height:1.1}
+.alb-box-artist{font-family:'Barlow Condensed',sans-serif;font-style:normal;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--mu);margin-top:8px}
+.alb-box-play{margin-top:22px;width:100%;background:var(--red);border:none;color:var(--ink);padding:13px 18px;display:flex;align-items:center;justify-content:center;gap:10px;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:opacity .2s}
+.alb-box-play:hover{opacity:.85}
+.alb-box-right{padding:48px 44px 40px 32px;overflow-y:auto}
+.alb-box-tracks-hdr{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--mu);margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid #262420}
+.alb-box-tracks .trk{padding:12px 4px}
+@media(max-width:700px){
+  .alb-m{padding:0;align-items:flex-end}
+  .alb-box{grid-template-columns:1fr;max-width:none;width:100%;max-height:92vh;border-left:none;border-right:none;border-bottom:none}
+  .alb-box-left{border-right:none;border-bottom:1px solid #262420;padding:28px 24px 24px;align-items:center;text-align:center;flex-direction:row;gap:18px}
+  .alb-box-cover-wrap{width:92px;height:92px;flex-shrink:0;margin-bottom:0}
+  .alb-box-left-txt{text-align:left;flex:1;min-width:0}
+  .alb-box-ttl{font-size:20px}
+  .alb-box-play{margin-top:12px;width:44px;height:44px;padding:0;flex-shrink:0;border-radius:50%}
+  .alb-box-play span{display:none}
+  .alb-box-right{padding:20px 20px 32px}
+}
 .mus-adm{margin-bottom:32px;display:none}
 .admin-mode .mus-adm{display:block}
 .trk.no-audio{opacity:.5}
@@ -1353,12 +1397,14 @@ body.user-logged .auth-tabs{display:none!important}
       <div id="editAlbList"></div>
     </div>
   </div>
-  <div class="cd-carousel-wrap">
+  <div id="musicFeatured"></div>
+  <div class="cd-carousel-wrap" id="musicMoreWrap" style="display:none">
+    <div class="music-more-lbl">Otros lanzamientos</div>
     <div class="cd-carousel" id="cdCarousel"></div>
-  </div>
-  <div class="cd-arrows" id="cdArrows" style="display:none">
-    <button class="cd-arr" onclick="cdScroll(-1)">&#8592;</button>
-    <button class="cd-arr" onclick="cdScroll(1)">&#8594;</button>
+    <div class="cd-arrows" id="cdArrows" style="display:none">
+      <button class="cd-arr" onclick="cdScroll(-1)">&#8592;</button>
+      <button class="cd-arr" onclick="cdScroll(1)">&#8594;</button>
+    </div>
   </div>
   <div class="mus-hint" id="musHint"><div id="musHintLogo" style="margin-bottom:18px;display:none"><img id="musHintLogoImg" style="height:48px;object-fit:contain;opacity:.25" alt=""></div><div class="mus-ht">Próximamente</div><p>Música en camino.</p></div>
 </section>
@@ -1367,15 +1413,16 @@ body.user-logged .auth-tabs{display:none!important}
 <div class="alb-m" id="albModal">
   <div class="alb-box">
     <button class="alb-box-x" onclick="closeAlbModal()">✕</button>
-    <div class="alb-box-hdr">
-      <div class="alb-box-cover" id="albBoxCoverWrap"></div>
-      <div>
+    <div class="alb-box-left">
+      <div class="alb-box-cover-wrap" id="albBoxCoverWrap"></div>
+      <div class="alb-box-left-txt">
         <div class="alb-box-ttl" id="albBoxName"></div>
         <div class="alb-box-artist" id="albBoxArtist"></div>
-        <button class="alb-box-play" onclick="playCurrentAlbFirst()">▶</button>
       </div>
+      <button class="alb-box-play" onclick="playCurrentAlbFirst()"><span>Reproducir álbum</span> ▶</button>
     </div>
-    <div class="alb-box-tracks">
+    <div class="alb-box-right">
+      <div class="alb-box-tracks-hdr">Tracklist</div>
       <div class="trk-list" id="albBoxTracks"></div>
     </div>
   </div>
@@ -1957,6 +2004,13 @@ let dcEditId=null;
 
 function rf(f,cb){const r=new FileReader();r.onload=e=>cb(e.target.result);r.readAsDataURL(f);}
 function g(id){return document.getElementById(id);}
+// Escapa HTML antes de insertar texto proveniente de clientes (dirección,
+// nombre, etc.) en el DOM — evita que alguien meta un <script> en un campo
+// de checkout y que se ejecute cuando otra persona (o el admin) vea ese pedido.
+function escapeHtml(s){
+  if(s==null)return'';
+  return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
 function gv(id){return g(id).value.trim();}
 function toast(msg){const t=g('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
 
@@ -1967,7 +2021,7 @@ async function loadAllFromSB(){
   }catch(e){console.warn('products:',e);}
 
   // Álbumes
-  try{const albs=await sbGet('albums');
+  try{const albs=await sbGet('albums','order=created_at.desc');
     if(albs){AL={};albs.forEach(r=>{AL[r.key]={name:r.name,artist:r.artist||'11D',cover:r.cover||'',tracks:r.tracks||[]};});}
   }catch(e){console.warn('albums:',e);}
 
@@ -2816,7 +2870,7 @@ function showCoStep(n){
       const dept=g('depto-select')?.value||'';
       const shipAmt=0;
       const fmt=n2=>'$'+Math.round(n2).toLocaleString('es-CO');
-      sumEl.innerHTML=`<b style="color:var(--txt)">${name}</b><br>${g('email-input')?.value||''}<br>${city}, ${dept}<br>Envío estimado: <b style="color:var(--red)">${shipAmt>0?fmt(shipAmt):'Por confirmar'}</b>`;
+      sumEl.innerHTML=`<b style="color:var(--txt)">${escapeHtml(name)}</b><br>${escapeHtml(g('email-input')?.value||'')}<br>${escapeHtml(city)}, ${escapeHtml(dept)}<br>Envío estimado: <b style="color:var(--red)">${shipAmt>0?fmt(shipAmt):'Por confirmar'}</b>`;
     }
   }
   g('coModal').scrollTop=0;
@@ -3641,37 +3695,64 @@ function addTrack(){addSingleTrack();}// legacy alias
 let currentAlbModalKey=null;
 
 function renderAlbums(){
-  const carousel=g('cdCarousel'),hint=g('musHint'),arrows=g('cdArrows');
+  const featured=g('musicFeatured'),moreWrap=g('musicMoreWrap'),carousel=g('cdCarousel'),hint=g('musHint'),arrows=g('cdArrows');
   const keys=Object.keys(AL);
   if(!keys.length){
-    if(carousel)carousel.innerHTML='';
-    if(arrows)arrows.style.display='none';
+    if(featured)featured.innerHTML='';
+    if(moreWrap)moreWrap.style.display='none';
     if(hint)hint.style.display='block';
     const mhl=g('musHintLogoImg');if(mhl&&logo){mhl.src=logo;const w=g('musHintLogo');if(w)w.style.display='block';}
     return;
   }
   if(hint)hint.style.display='none';
-  if(arrows)arrows.style.display=keys.length>4?'flex':'none';
+
+  // ── Lanzamiento destacado (el más reciente) ──
+  const fKey=keys[0],al=AL[fKey];
+  const coverHtml=al.cover?`<img src="${al.cover}" alt="${al.name}">`:`<div class="music-featured-cover-ph">${(al.name||'11D').slice(0,3).toUpperCase()}</div>`;
+  const tracksHtml=al.tracks.map((t,ii)=>`<div class="trk${t.src?'':' no-audio'}" data-alb="${fKey}" data-i="${ii}" onclick="playT('${fKey}',${ii})"><span class="t-num">${ii+1}</span><span class="t-nm">${t.name}${t.feat?`<span class="t-ft">ft. ${t.feat}</span>`:''}</span><span class="t-pi">${t.src?'▶':'○'}</span><button class="t-del" onclick="event.stopPropagation();delTrack('${fKey}',${ii})">✕</button></div>`).join('');
+  if(featured)featured.innerHTML=`
+    <div class="music-featured">
+      <div class="music-featured-cover">
+        ${coverHtml}
+        <label class="music-featured-cover-edit" onclick="event.stopPropagation()">✎ Portada<input type="file" accept="image/*" style="display:none" onchange="changeAlbumCoverEdit('${fKey}',this)"></label>
+      </div>
+      <div>
+        <div class="music-featured-eyebrow">Último lanzamiento</div>
+        <div class="music-featured-name">${al.name}</div>
+        <div class="music-featured-artist">${al.artist||'11D'}</div>
+        <button class="music-featured-play" onclick="playT('${fKey}',0)">Reproducir álbum <span>▶</span></button>
+        <div class="music-featured-tracks trk-list">${tracksHtml}</div>
+        <button class="music-featured-del" onclick="delAlbum('${fKey}')">Eliminar álbum</button>
+      </div>
+    </div>`;
+
+  // ── Resto de la discografía (fila secundaria) ──
+  const restKeys=keys.slice(1);
+  if(!restKeys.length){
+    if(moreWrap)moreWrap.style.display='none';
+    return;
+  }
+  if(moreWrap)moreWrap.style.display='block';
+  if(arrows)arrows.style.display=restKeys.length>5?'flex':'none';
   if(!carousel)return;
-  carousel.innerHTML=keys.map(k=>{
-    const al=AL[k];
-    const coverHtml=al.cover?`<img src="${al.cover}" alt="${al.name}">`:`<div class="cd-cover-ph">${(al.name||'11D').slice(0,3).toUpperCase()}</div>`;
+  carousel.innerHTML=restKeys.map(k=>{
+    const a2=AL[k];
+    const cov=a2.cover?`<img src="${a2.cover}" alt="${a2.name}">`:`<div class="cd-cover-ph">${(a2.name||'11D').slice(0,3).toUpperCase()}</div>`;
     const delBtn=`<button class="cd-del" onclick="event.stopPropagation();delAlbum('${k}')">✕</button>`;
     const editBtn=`<label class="cd-cover-edit" onclick="event.stopPropagation()">✎<input type="file" accept="image/*" style="display:none" onchange="changeAlbumCoverEdit('${k}',this)"></label>`;
     return `<div class="cd-item" onclick="openAlbModal('${k}')">
       <div class="cd-disc">
-        <div class="cd-cover">${coverHtml}</div>
-        <div class="cd-sheen"></div>
-        <div class="cd-hole"></div>
+        <div class="cd-cover">${cov}</div>
+        <div class="cd-play-hint"><span>▶</span></div>
         ${delBtn}${editBtn}
       </div>
-      <div class="cd-name">${al.name}</div>
-      <div class="cd-artist">${al.artist||'11D'}</div>
+      <div class="cd-name">${a2.name}</div>
+      <div class="cd-artist">${a2.artist||'11D'}</div>
     </div>`;
   }).join('');
 }
 
-function cdScroll(dir){const c=g('cdCarousel');if(!c)return;c.scrollBy({left:dir*260,behavior:'smooth'});}
+function cdScroll(dir){const c=g('cdCarousel');if(!c)return;c.scrollBy({left:dir*180,behavior:'smooth'});}
 
 function openAlbModal(k){
   const al=AL[k];if(!al)return;
@@ -3791,7 +3872,7 @@ function renderOrderTracking(ord){
       <div class="track-info-cell"><div class="track-info-lbl">Número de guía</div><div class="track-info-val ${trackNum?'red':'dim'}">${trackNum||'Pendiente'}${trackNum?`<button class="track-copy-btn" onclick="trackCopyToClipboard('${trackNum}',this)" title="Copiar">⧉</button>`:''}</div></div>
     </div>
     <div class="track-steps">${stepsHtml}</div>
-    ${ord.address?`<div class="track-addr-block"><div class="track-addr-lbl">📍 Dirección de entrega</div><div class="track-addr-txt">${ord.address}</div></div>`:''}
+    ${ord.address?`<div class="track-addr-block"><div class="track-addr-lbl">📍 Dirección de entrega</div><div class="track-addr-txt">${escapeHtml(ord.address)}</div></div>`:''}
   `;
 }
 async function lookupTracking(){
